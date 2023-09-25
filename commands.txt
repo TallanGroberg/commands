@@ -1,0 +1,39 @@
+# this is a file for all the commands that I use often or don't want to forget. 
+# I will try to keep it organized by topic.
+shred -n 10 filename.txt # overwrite file 10 times with random data
+
+jot -r 1 1 100 # generate a random number between 1 and 100
+
+jot -r -w '%d' 100 1 100 | awk '{if (rand() <= 0.9) print "i" $0; else print "d" $0}'
+
+ls /directory | wc -l # count the number of files in a directory
+ls -l | grep ^- | wc -l # count the number of files in a directory
+find <directory> -type f | wc -l # count the number of files in a directory recursing into sub dirs
+
+ls -l | grep ^d | wc -l # count the number of directories in a directory
+
+tar -xvf filename.tar # open a targball file. 
+
+ps -aux | grep firefox
+kill -9 PID # PID is the process id shown
+
+# Using the pkill command
+pkill firefox # kill
+
+# Using the killall command
+killall firefox
+
+# Using the xkill command
+xkill
+
+############################
+find <directory> -type f -print0 | sort -zR | head -zn 35 | xargs -0 rm # randomly delete exactly 35 files from a directory
+
+# Replace <directory> with the path to the directory containing the files you want to delete. This command does the following:
+#     Lists all files in the specified directory using find.
+#     Shuffles the file list randomly using sort -zR.
+#     Selects the first 35 files from the shuffled list using head -zn 35.
+#     Deletes the selected files using xargs -0 rm
+######################
+
+
